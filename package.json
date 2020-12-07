@@ -2,11 +2,12 @@
     "name": "modern-legacy-build",
     "version": "1.0.0",
     "description": "",
-    "main": "index.js",
+    "main": "src/math/index.js",
     "scripts": {
         "start": "nodemon --exec babel-node src/index.js",
-        "build": "babel src --out-dir lib",
-        "prepare": "npm run build"
+        "build": "babel src/math --out-dir build",
+        "prepare": "npm run build",
+        "demo": "babel-node demo/index.js"
     },
     "keywords": [],
     "author": "",
@@ -20,7 +21,6 @@
         "prettier": "^2.2.1"
     },
     "dependencies": {
-        "@babel/polyfill": "^7.12.1",
         "dotenv": "^8.2.0"
     }
 }
