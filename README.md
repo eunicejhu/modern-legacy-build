@@ -28,3 +28,4 @@
 -   [Publishing an NPM packagen - Best Practices](https://betterstack.dev/blog/npm-package-best-practices/)
 -   [local testing package](https://flaviocopes.com/npm-local-package/)
 -   [browserslist best practices](https://github.com/browserslist/browserslist#best-practices)
+-   [babel-preset-env doc](https://babeljs.io/docs/en/babel-preset-env)
