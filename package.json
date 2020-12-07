@@ -7,7 +7,6 @@
         "start": "nodemon --exec babel-node src/index.js",
         "build": "babel src --out-dir lib",
         "prepare": "npm run build"
-        
     },
     "keywords": [],
     "author": "",
@@ -21,6 +20,7 @@
         "prettier": "^2.2.1"
     },
     "dependencies": {
+        "@babel/polyfill": "^7.12.1",
         "dotenv": "^8.2.0"
     }
 }
