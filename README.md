@@ -15,3 +15,13 @@
 -   @babel/core: transpile logic
 -   @babel/preset-env
 -   nodemon
+
+## babel config
+
+-   targets.esmodules = true, will target browsers supporting ESModules
+
+## Refs
+
+-   [How to smart bundling legacy code browser?](https://www.smashingmagazine.com/2018/10/smart-bundling-legacy-code-browsers/)
+-   [Loading polyfills only when needed](https://philipwalton.com/articles/loading-polyfills-only-when-needed/)
+-   [Publishing an NPM packagen - Best Practices](https://betterstack.dev/blog/npm-package-best-practices/)
