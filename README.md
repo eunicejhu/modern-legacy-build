@@ -24,4 +24,7 @@
 
 -   [How to smart bundling legacy code browser?](https://www.smashingmagazine.com/2018/10/smart-bundling-legacy-code-browsers/)
 -   [Loading polyfills only when needed](https://philipwalton.com/articles/loading-polyfills-only-when-needed/)
+    -   ` useBuiltIn: "usage"`
 -   [Publishing an NPM packagen - Best Practices](https://betterstack.dev/blog/npm-package-best-practices/)
+-   [local testing package](https://flaviocopes.com/npm-local-package/)
+-   [browserslist best practices](https://github.com/browserslist/browserslist#best-practices)
