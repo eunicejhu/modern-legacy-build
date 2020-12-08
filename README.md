@@ -29,3 +29,6 @@
 -   [local testing package](https://flaviocopes.com/npm-local-package/)
 -   [browserslist best practices](https://github.com/browserslist/browserslist#best-practices)
 -   [babel-preset-env doc](https://babeljs.io/docs/en/babel-preset-env)
+-   [beginner: how to publish npm package](https://www.robinwieruch.de/publish-npm-package-node)
+-   [how to make sure our library work in all environments?]
+-   [Build my own library in differenct Module system](https://www.freecodecamp.org/news/anatomy-of-js-module-systems-and-building-libraries-fadcd8dbd0e/)
