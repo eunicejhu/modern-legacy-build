@@ -17,7 +17,7 @@
         "build:cjs": "NODE_ENV=cjs rollup -c",
         "build:lib:es": "BABEL_ENV=es babel src -d lib",
         "prepare": "npm run build:rollup",
-        "demo": "babel-node demo/index.js"
+        "demo": "node demo/index.js"
     },
     "keywords": [],
     "author": "",
