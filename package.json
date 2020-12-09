@@ -9,7 +9,7 @@
         "lib"
     ],
     "scripts": {
-        "start": "nodemon --exec babel-node src/index.js",
+        "start": "npx http-server",
         "build:babel": "babel src/math --out-dir build",
         "clean": "rimraf dist",
         "build:rollup": "run-s clean && run-p build:es build:cjs build:lib:es",
