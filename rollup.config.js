@@ -12,8 +12,10 @@ export default {
         file: {
             es: pkg.module,
             cjs: pkg.main,
+            umd: pkg.umd,
         }[env],
         format: env,
+        name: "myBundle",
     },
     plugins: [
         resolve(),
