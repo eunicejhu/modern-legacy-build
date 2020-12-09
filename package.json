@@ -18,7 +18,8 @@
         "build:umd": "NODE_ENV=umd rollup -c",
         "build:lib:es": "BABEL_ENV=es babel src -d lib",
         "prepare": "npm run build:rollup",
-        "demo": "node demo/index.js"
+        "demo": "node demo/index.js",
+        "test": "node_modules/.bin/jest"
     },
     "keywords": [],
     "author": "",
@@ -48,6 +49,7 @@
             "**/*.{js,jsx}",
             "!**/node_modules/**",
             "!**/vendor/**"
-        ]
+        ],
+        "testEnvironment": "node"
     }
 }
