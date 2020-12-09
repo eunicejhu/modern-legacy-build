@@ -4,9 +4,9 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Test Packages</title>
-        <script type="module">
-            import { add } from "./dist/index.es.js";
-            console.log(add(1, 2));
+        <script src="dist/index.umd.js"></script>
+        <script>
+            console.log(myBundle.add(1, 2));
         </script>
     </head>
     <body></body>
