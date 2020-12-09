@@ -1,4 +1,4 @@
-import resolve from "rollup-plugin-node-resolve";
+import { nodeResolve } from "@rollup/plugin-node-resolve";
 import babel from "rollup-plugin-babel";
 import commonjs from "rollup-plugin-commonjs";
 import filesize from "rollup-plugin-filesize";
@@ -7,7 +7,7 @@ const env = process.env.NODE_ENV;
 const pkg = require("./package.json");
 
 export default {
-    input: "src/math/index.js",
+    input: "src/penguinRandomHouse/index.js",
     output: {
         file: {
             es: pkg.module,
@@ -16,13 +16,15 @@ export default {
         }[env],
         format: env,
         name: "myBundle",
+        globals: {
+            axios: "axios",
+        },
     },
     plugins: [
-        resolve(),
-        babel({
-            exclude: "node_modules/**",
-        }),
+        nodeResolve(),
+        babel({ exclude: "node_modules/**" }),
         commonjs(),
         filesize(),
     ],
+    external: ["axios"],
 };
