@@ -15,7 +15,7 @@
         "build:rollup": "run-s clean && run-p build:es build:cjs build:lib:es",
         "build:es": "NODE_ENV=es rollup -c",
         "build:cjs": "NODE_ENV=cjs rollup -c",
-        "build:lib:es": "BABEL_ENV=es babel src -d lib",
+        "build:lib:es": "BABEL_ENV=es babel src/math/index.js -d lib",
         "prepare": "npm run build:rollup",
         "demo": "node demo/index.js"
     },
