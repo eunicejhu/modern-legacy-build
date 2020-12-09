@@ -4,9 +4,12 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Test Packages</title>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="dist/index.umd.js"></script>
         <script>
-            console.log(myBundle.add(1, 2));
+            myBundle.PenguinRandomHouse.getCats().then((data) => {
+                document.body.append(data.data[0].description);
+            });
         </script>
     </head>
     <body></body>
