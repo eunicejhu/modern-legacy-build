@@ -20,7 +20,8 @@
         "prepare": "npm run build:rollup",
         "demo": "node demo/index.js",
         "test": "node_modules/.bin/jest",
-        "build:math:iife": "rollup src/math/index.js --file build/math/index.iife.js --format iife --name math"
+        "build:math:iife": "rollup src/math/index.js --file build/math/index.iife.js --format iife --name math",
+        "build:math:amd": "rollup src/math/index.js --file build/math/index.amd.js --format amd"
     },
     "keywords": [],
     "author": "",

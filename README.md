@@ -32,3 +32,10 @@
 -   [beginner: how to publish npm package](https://www.robinwieruch.de/publish-npm-package-node)
 -   [how to make sure our library work in all environments?]
 -   [Build my own library in differenct Module system](https://www.freecodecamp.org/news/anatomy-of-js-module-systems-and-building-libraries-fadcd8dbd0e/)
+-   [build your own library using rollup](https://risanb.com/code/bundling-your-javascript-library-with-rollup/#resolving-third-party-modules-with-plugin)
+
+## format
+
+### amd
+
+-   to load an amd file in browser, we need an amd loader
