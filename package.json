@@ -19,7 +19,8 @@
         "build:lib:es": "BABEL_ENV=es babel src -d lib",
         "prepare": "npm run build:rollup",
         "demo": "node demo/index.js",
-        "test": "node_modules/.bin/jest"
+        "test": "node_modules/.bin/jest",
+        "build:math:iife": "rollup src/math/index.js --file build/math/index.iife.js --format iife --name math"
     },
     "keywords": [],
     "author": "",
@@ -43,6 +44,9 @@
     "dependencies": {
         "axios": "^0.21.0",
         "dotenv": "^8.2.0"
+    },
+    "peerDependencies": {
+        "axios": "0.x"
     },
     "jest": {
         "collectCoverageFrom": [
