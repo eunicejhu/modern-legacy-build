@@ -6,9 +6,9 @@
         <title>Test Packages</title>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="dist/index.umd.js"></script>
-        <script src="build/require.js"></script>
+        <script src="build/math/require.js"></script>
         <script>
-            require(["build/math/index.amd.js"], function (module) {
+            require(["build/math/index.js"], function (module) {
                 console.log(module.add(1, 2));
             });
         </script>
