@@ -45,3 +45,19 @@ export const printNumbers2 = function (from, to) {
         }
     }
 };
+
+export const memo = function (f) {
+    let cache = new Map();
+    const hash = (args) => Array.prototype.join.call(args); // method borrowing if args is not a real array.
+
+    return function (...args) {
+        let key = hash(args); // args is real array. but arguments is array-like.
+
+        if (cache.get(key)) {
+            return cache.get(key);
+        }
+        let result = f.call(this, ...args);
+        cache.set(key, result);
+        return result;
+    };
+};

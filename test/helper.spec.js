@@ -5,6 +5,7 @@ import {
     sum,
     printNumbers1,
     printNumbers2,
+    memo,
 } from "../src/math/helper";
 
 it("captalize", () => {
@@ -48,11 +49,19 @@ it("printNumbers1", (done) => {
     }, 5000);
 });
 
-it.only("printNumbers2", (done) => {
+it("printNumbers2", (done) => {
     jest.spyOn(global.console, "log");
     printNumbers2(2, 5);
     setTimeout(() => {
         expect(console.log).toHaveBeenCalledTimes(4);
         done();
     }, 5000);
+});
+
+it.only("memo", () => {
+    let add = (a, b, c) => a + b + c;
+    add = memo(add);
+    add(1, 2, 3);
+    add(1, 2, 3);
+    expect(add(1, 3, 3)).toBe(7);
 });
