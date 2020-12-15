@@ -49,13 +49,12 @@ it("printNumbers1", (done) => {
     }, 5000);
 });
 
-it("printNumbers2", (done) => {
+it.only("printNumbers2", () => {
+    jest.useFakeTimers();
     jest.spyOn(global.console, "log");
     printNumbers2(2, 5);
-    setTimeout(() => {
-        expect(console.log).toHaveBeenCalledTimes(4);
-        done();
-    }, 5000);
+    jest.runTimersToTime(5000);
+    expect(console.log).toHaveBeenCalledTimes(4);
 });
 
 it.only("memo", () => {
