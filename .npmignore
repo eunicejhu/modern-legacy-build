@@ -1,1 +1,12 @@
 src/
+.babelrc
+.browserslistrc
+demo/
+.vscode
+node_modules/
+.env
+.gitignore
+.prettierrc
+package-lock.json
+rollup.config.json
+test
