@@ -10,6 +10,10 @@ export const cloneDeep = (obj) => {
     return JSON.parse(JSON.stringify(obj));
 };
 
+export const cloneShallow = (obj) => {
+    return Object.defineProperties({}, Object.getOwnPropertyDescriptors(obj));
+};
+
 export const sum = function (a) {
     return function (b) {
         return a + b;
@@ -60,4 +64,79 @@ export const memo = function (f) {
         cache.set(key, result);
         return result;
     };
+};
+
+function throttle(func, ms) {
+    let isThrottled = false,
+        savedArgs,
+        savedThis;
+
+    function wrapper() {
+        if (isThrottled) {
+            // (2)
+            savedArgs = arguments;
+            savedThis = this;
+            return;
+        }
+
+        func.apply(this, arguments); // (1)
+
+        isThrottled = true;
+
+        setTimeout(function () {
+            isThrottled = false; // (3)
+            console.log({ savedArgs, savedThis });
+            if (savedArgs) {
+                wrapper.apply(savedThis, savedArgs);
+                savedArgs = savedThis = null;
+            }
+        }, ms);
+    }
+
+    return wrapper;
+}
+
+export const shareNotStomach = () => {
+    let lazy, speedy;
+    let hamster = {
+        stomach: [],
+        eat(food) {
+            this.stomach.push(food);
+        },
+    };
+    lazy = {
+        stomach: [],
+        __proto__: hamster,
+    };
+    speedy = {
+        stomach: [],
+        __proto__: hamster,
+    };
+    return { lazy, speedy };
+};
+
+export const repeatSelf = function (n) {
+    return new Array(n + 1).join(this);
+};
+
+export const deferize = function () {
+    if (!Function.prototype.defer) {
+        Function.prototype.defer = function (ms) {
+            setTimeout(this, ms);
+        };
+    }
+};
+
+export const deferize2 = function () {
+    if (!Function.prototype.defer) {
+        Function.prototype.defer = function (ms) {
+            let f = this;
+            function wrapper(...args) {
+                setTimeout(() => {
+                    f.apply(this, args);
+                }, ms);
+            }
+            return wrapper;
+        };
+    }
 };
