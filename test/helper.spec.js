@@ -12,6 +12,7 @@ import {
     repeatSelf,
     deferize,
     deferize2,
+    Clock,
 } from "../src/math/helper";
 
 it("captalize", () => {
@@ -117,7 +118,7 @@ it("deferize", () => {
     expect(console.log).toHaveBeenCalledWith("hi");
 });
 
-it.only("deferize2", () => {
+it("deferize2", () => {
     jest.useFakeTimers();
     jest.spyOn(global.console, "log").mockImplementation(jest.fn);
     const User = function (name) {
@@ -134,4 +135,16 @@ it.only("deferize2", () => {
     jest.advanceTimersByTime(500);
 
     expect(console.log).toHaveBeenCalledWith("hi ", "isabella", "welcome");
+});
+
+it.only("Clock", () => {
+    const clock = new Clock({ template: "h:m:s" });
+    expect(Object.getOwnPropertyNames(clock)).toEqual(["template"]);
+    expect(Object.keys(clock)).toEqual(["timer", "template"]);
+    expect(Object.getOwnPropertyNames(Clock.prototype)).toEqual([
+        "constructor",
+        "render",
+        "start",
+        "stop",
+    ]);
 });

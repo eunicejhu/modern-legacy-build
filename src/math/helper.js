@@ -140,3 +140,61 @@ export const deferize2 = function () {
         };
     }
 };
+
+export const toString = () => {
+    let dictionary = Object.create(null);
+
+    dictionary.toString = function () {
+        return Object.keys(this).join();
+    };
+
+    // add some data
+    dictionary.apple = "Apple";
+    dictionary.__proto__ = "test"; // __proto__ is a regular property key here
+
+    // only apple and __proto__ are in the loop
+    for (let key in dictionary) {
+        alert(key); // "apple", then "__proto__"
+    }
+
+    // your toString in action
+    alert(dictionary); // "apple,__proto__"
+};
+
+class Clock {
+    timer;
+    constructor({ template }) {
+        this.template = template;
+    }
+
+    render() {
+        let date = new Date();
+
+        let hours = date.getHours();
+        if (hours < 10) hours = "0" + hours;
+
+        let mins = date.getMinutes();
+        if (mins < 10) mins = "0" + mins;
+
+        let secs = date.getSeconds();
+        if (secs < 10) secs = "0" + secs;
+
+        let output = this.template
+            .replace("h", hours)
+            .replace("m", mins)
+            .replace("s", secs);
+
+        console.log(output);
+    }
+
+    start() {
+        this.render();
+        this.timer = setInterval(this.render, 1000);
+    }
+
+    stop() {
+        clearInterval(this.timer);
+    }
+}
+
+export { Clock };
