@@ -12,7 +12,6 @@ import {
     repeatSelf,
     deferize,
     deferize2,
-    Clock,
 } from "../src/math/helper";
 
 it("captalize", () => {
@@ -137,14 +136,11 @@ it("deferize2", () => {
     expect(console.log).toHaveBeenCalledWith("hi ", "isabella", "welcome");
 });
 
-it.only("Clock", () => {
-    const clock = new Clock({ template: "h:m:s" });
-    expect(Object.getOwnPropertyNames(clock)).toEqual(["template"]);
-    expect(Object.keys(clock)).toEqual(["timer", "template"]);
-    expect(Object.getOwnPropertyNames(Clock.prototype)).toEqual([
-        "constructor",
-        "render",
-        "start",
-        "stop",
-    ]);
+it.only("Date", () => {
+    const today = new Date();
+    expect(today.__proto__).toEqual(Date.prototype);
+    expect(today.__proto__.__proto__).toEqual(Object.prototype);
+    expect(today.__proto__.__proto__.__proto__).toBeNull();
+    expect(Date.prototype).toEqual({});
+    expect(Date.prototype.constructor).toEqual(Date);
 });
