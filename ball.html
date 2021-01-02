@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Test</title>
+        <style>
+            #field {
+                width: 200px;
+                height: 150px;
+                border: 10px solid black;
+                background-color: #00ff00;
+                overflow: hidden;
+                position: relative;
+            }
+        </style>
+    </head>
+
+    <body style="height: 2000px">
+        Click on a field to move the ball there.
+        <br />
+        The ball should never leave the field.
+
+        <div id="field">
+            <img src="./svg/ball.svg" id="ball" /> . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . . . . . . . . . . . .
+        </div>
+        <script>
+            const fieldEl = document.querySelector("#field");
+            const ballEl = document.querySelector("#ball");
+
+            function getStyle(el, property) {
+                const computedStyle = window.getComputedStyle(el);
+                return +computedStyle
+                    .getPropertyValue(property)
+                    .match(/\d+(?=px)/)[0];
+            }
+            fieldEl.addEventListener("click", function (event) {
+                const borderRightFieldEl = getStyle(fieldEl, "border-right");
+                const borderLeftFieldEl = getStyle(fieldEl, "border-left");
+                const borderTopFieldEl = getStyle(fieldEl, "border-top");
+                const borderBottomFieldEl = getStyle(fieldEl, "border-bottom");
+                const r = ballEl.width;
+                const {
+                    width,
+                    height,
+                    x: xToWindow,
+                    y: yToWindow,
+                } = fieldEl.getBoundingClientRect();
+
+                const { clientX: x, clientY: y } = event;
+                let toPosition = { x: null, y: null };
+
+                console.log({ x, y });
+
+                // toPosition
+                if (x > xToWindow + width - r) {
+                    toPosition.x = xToWindow + width - r - borderRightFieldEl;
+                } else if (x < xToWindow + r) {
+                    toPosition.x = xToWindow + borderLeftFieldEl;
+                } else {
+                    toPosition.x = x - r / 2;
+                }
+
+                if (y > yToWindow + height - r) {
+                    toPosition.y = yToWindow + height - r - borderBottomFieldEl;
+                } else if (y < yToWindow + r) {
+                    toPosition.y = yToWindow + borderTopFieldEl;
+                } else {
+                    toPosition.y = y - r / 2;
+                }
+
+                const left = toPosition.x - xToWindow - borderLeftFieldEl;
+                const top = toPosition.y - yToWindow - borderTopFieldEl;
+
+                ballEl.style = `position: relative; left: ${left}px; top: ${top}px; transition: all 0.4s`;
+            });
+        </script>
+    </body>
+</html>
