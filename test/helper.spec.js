@@ -136,11 +136,20 @@ it("deferize2", () => {
     expect(console.log).toHaveBeenCalledWith("hi ", "isabella", "welcome");
 });
 
-it.only("Date", () => {
+it("Date", () => {
     const today = new Date();
     expect(today.__proto__).toEqual(Date.prototype);
     expect(today.__proto__.__proto__).toEqual(Object.prototype);
     expect(today.__proto__.__proto__.__proto__).toBeNull();
     expect(Date.prototype).toEqual({});
     expect(Date.prototype.constructor).toEqual(Date);
+});
+
+it.only("exclude", () => {
+    const fruits = ["apple", "banana", "peach"];
+    const exclude = (exclude, target) => {
+        return target != exclude;
+    };
+    const actual = fruits.filter(exclude.bind(this, "banana"));
+    expect(actual).toEqual(["apple", "peach"]);
 });
