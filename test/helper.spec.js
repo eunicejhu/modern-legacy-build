@@ -145,7 +145,7 @@ it("Date", () => {
     expect(Date.prototype.constructor).toEqual(Date);
 });
 
-it.only("exclude", () => {
+it("exclude", () => {
     const fruits = ["apple", "banana", "peach"];
     const exclude = (exclude, target) => {
         return target != exclude;
