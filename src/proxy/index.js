@@ -22,3 +22,13 @@ export function arrayProxy(array) {
         },
     });
 }
+
+export function makeObservable(target) {
+    /* your code */
+    return new Proxy(target, {
+        set(target, key, value, receiver) {
+            console.log("SET " + key + " = " + value);
+            return Reflect.set(target, key, value, receiver);
+        },
+    });
+}
