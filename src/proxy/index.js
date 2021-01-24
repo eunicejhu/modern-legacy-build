@@ -1,11 +1,11 @@
 //Error on reading non-existent property
 export function wrap(target) {
     return new Proxy(target, {
-        get(target, prop) {
-            if (!target[prop]) {
-                throw "ReferenceError: Property doesn't exist: \"" + prop + '"';
+        get(target, prop, receiver) {
+            if (prop in target) {
+                return Reflect.get(target, prop, receiver);
             } else {
-                return target[prop];
+                throw "ReferenceError: Property doesn't exist: \"" + prop + '"';
             }
         },
     });
