@@ -10,3 +10,15 @@ export function wrap(target) {
         },
     });
 }
+
+export function arrayProxy(array) {
+    return new Proxy(array, {
+        get(array, index, receiver) {
+            let convertedIndex = Number(index);
+            if (convertedIndex < 0) {
+                convertedIndex += array.length;
+            }
+            return Reflect.get(array, convertedIndex, receiver);
+        },
+    });
+}
